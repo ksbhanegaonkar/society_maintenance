@@ -35,3 +35,5 @@ out/
 
 ### VS Code ###
 .vscode/
+
+src/webapp/society_maintenance/node_modules/
