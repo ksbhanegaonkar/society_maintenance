@@ -1,0 +1,79 @@
+.login-page-grid{
+    height: 1000px;
+    display: flex;
+    position: relative;
+    background-color: transparent;
+    justify-content: center;
+    align-items: center;
+}
+
+.nirman-aura-image{
+    position: fixed;
+    z-index: -1;
+    width: 1300px;
+    
+}
+
+.login-window{
+    width: 500px;
+    height: 330px;
+    backdrop-filter: blur(10px);
+    border: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 10px;
+    opacity: 0.9;
+    transition: 1s;
+    background-color: rgb(170, 183, 253);
+}
+
+
+.pin-input, .flat-number-input{
+    margin-top: 40px;
+    height: 40px;
+    width: 80%;
+    border-radius: 5px;
+    border: none;
+    box-shadow: inset 3px;
+    font-size: 18px;
+    padding-left: 20px;
+}
+
+.flat-number-input::placeholder, .pin-input::placeholder{
+    font-size: 18px;
+}
+
+.login-button{
+    margin-top: 20px;
+    width: 200px;
+    height: 40px;
+    background-color: rgb(93, 245, 93);
+    border: none;
+    border-radius: 5px;
+}
+
+
+.login-button:hover{
+    background-color: rgb(144, 253, 144);
+}
+
+
+.new-user-password-reset{
+    margin-top: 30px;
+    display: flex;
+    width: 400px;
+    justify-content: space-between;
+}
+
+.new-user-button, .forgot-password-button{
+    color: blue;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+}
+
+.login-validation-error{
+    color: red;
+    font-size: 18px;
+}

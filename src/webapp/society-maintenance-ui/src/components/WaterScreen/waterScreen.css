@@ -1,0 +1,38 @@
+.water-screen{
+    display: flex;
+    flex-direction: column;
+    border: solid 1px red;
+    height: 80vh;
+}
+
+.water-screen-header{
+    background-color: rgb(178, 178, 179);
+    font-size: 2rem;
+    font-weight: bold;
+    display: block;
+    padding: 1%;
+}
+
+.water-screen-main-stats{
+    display: flex;
+}
+
+.main-stat-left-content{
+    flex: 1;
+    text-align: left;
+    margin-left: 4%;
+    margin-top: 3%;
+    font-size: 1.3rem;
+}
+
+.main-stat-right-content{
+    flex: 1;
+    text-align: left;
+    margin-left: 4%;
+    margin-top: 3%;
+    font-size: 1.3rem;
+}
+
+.tanker-status{
+    margin-top: 2%;
+}

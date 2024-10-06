@@ -1,0 +1,117 @@
+.maintenance-screen{
+    background-color: rgb(253, 252, 252);
+    height: 90vh;
+    width: auto;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+.maintenance-screen-header{
+    background-color: rgb(178, 178, 179);
+    font-size: 2rem;
+    font-weight: bold;
+    display: block;
+    padding: 1%;
+    
+}
+
+.maintenance-screen-body{
+    width: auto;
+    height: 100%;
+    display: flex;
+    padding-left: 2%;
+    justify-content: center;
+    align-items: center;
+}
+
+.my-maintenance-detail, .society-maintenance-detail{
+    border: solid 2px lightgrey;
+    width: 40%;
+    height: 80%;
+    margin: 1%;
+    display: flex;
+    flex-direction: column;
+}
+
+.my-maintenance-detail-header{
+    font-size: 2rem;
+    font-weight: bold;
+    flex: 1;
+}
+
+.my-maintenance-detail-body, .society-maintenance-detail-body{
+    flex: 7;
+    border-bottom: solid grey 2px;
+    margin-bottom: 1%;
+}
+
+.my-maintenance-detail-footer{
+    display: flex;
+}
+
+.record-paid-maintenance-button{
+    height: 40%;
+    margin-left: 5%;
+    margin-top: 4%;
+    padding: 1%;
+    transition: 0.25s;
+}
+
+.record-paid-maintenance-button:hover{
+    background-color: gray;
+}
+
+
+.maintenance-footer-summary, .society-maintenance-detail-footer{
+    flex: 1;
+    text-align: right;
+    margin-right: 4%;
+    margin-bottom: 3%;
+    font-size: 1.3rem;
+    font-weight: bold;
+}
+
+
+.society-maintenance-detail-header{
+    font-size: 2rem;
+    font-weight: bold;
+    flex: 1;
+}
+.record-paid-maintenance-modal-content{
+    left: 30%;
+    top: 30%;
+    position: absolute;
+    width:60vh;
+    height:40vh;
+    border: solid 3px gray;
+    background-color: white;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 8%;
+    z-index: 100;
+    opacity: 100%;
+}
+
+.maintenance-modal-period-dropdown{
+    display: flex;
+    gap: 5%;
+    justify-content: center;
+}
+
+.maintenance-modal-period-dropdown-header{
+    font-size: 20px;
+}
+
+.maintenance-modal-period-dropdown-content{
+}
+
+.submit-maintenance-button{
+    padding: 1%;
+    transition: 0.25s;
+}
+
+.submit-maintenance-button:hover{
+    background-color: gray;
+}
