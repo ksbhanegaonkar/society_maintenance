@@ -5,6 +5,8 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
+import java.util.List;
+
 @Entity
 @Table(name="society_member")
 public class User {
@@ -30,4 +32,5 @@ public class User {
     public void setUserName(String userName) {
         this.userName = userName;
     }
+
 }
