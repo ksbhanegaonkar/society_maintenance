@@ -6,7 +6,7 @@ import { useState } from 'react';
 function MaintenanceScreen() {
     const [period, setPeriod] = useState('');
     const [monthSelected, setMonthSelected] = useState('');
-    const [modalShow, setModalShow] = useState(true);
+    const [modalShow, setModalShow] = useState(false);
     const periodDropdownList = {
         oneMonth: 'One Month',
         twoMonths: 'Two Months',

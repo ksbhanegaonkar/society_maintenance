@@ -32,6 +32,6 @@ public class CustomRoleFinder implements RolesFinder {
             roles.forEach(role -> rolesFound.add(role.toString()));
         }
 
-        return List.of("admin");
+        return List.of("2001", "1984", "5150");
     }
 }

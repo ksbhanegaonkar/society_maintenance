@@ -1,8 +1,10 @@
 package com.bhan.ked;
 
 import io.micronaut.runtime.Micronaut;
+import io.micronaut.security.token.generator.RefreshTokenGenerator;
 import io.swagger.v3.oas.annotations.*;
 import io.swagger.v3.oas.annotations.info.*;
+import jakarta.inject.Inject;
 
 @OpenAPIDefinition(
     info = @Info(

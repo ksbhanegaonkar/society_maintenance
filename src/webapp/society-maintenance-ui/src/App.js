@@ -1,20 +1,21 @@
-import logo from './logo.svg';
 import './App.css';
 import LoginPage from './components/LoginPage/loginPage';
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
 import HomePage from './components/HomePage/homePage';
+import Layout from './components/Layout/Layout';
+import RequireAuth from './components/LoginPage/RequireAuth';
 
 function App() {
   return (
-    <div className="App">
-      <BrowserRouter>
-        <Routes>
-            <Route index element={<LoginPage />} />
-            <Route path="home" element={<HomePage />} />
-        </Routes>
-      </BrowserRouter>
-    </div>
-    
+    <Routes>
+      <Route path="/" element={<Layout />}>
+        <Route index element={<LoginPage />} />
+        <Route path="login" element={<LoginPage />} />
+        <Route element={<RequireAuth/>}>
+          <Route path="home" element={<HomePage />} />
+        </Route>
+      </Route>
+    </Routes>
   );
 }
 

@@ -5,11 +5,9 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
-import java.util.List;
-
 @Entity
-@Table(name="society_member")
-public class User {
+@Table(name="user_detail")
+public class UserDetail {
     @Id
     @Column(name = "id")
     private int id;
