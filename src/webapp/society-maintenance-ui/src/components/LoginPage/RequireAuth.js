@@ -4,8 +4,6 @@ import useAuth from "../../hooks/useAuth";
 const RequireAuth = ({ allowedRoles }) => {
     const { auth } = useAuth();
     const location = useLocation();
-    console.log('access token is :::'+auth?.access_token);
-    console.dir(auth);
     return (
         auth?.accessToken
             ? <Outlet />

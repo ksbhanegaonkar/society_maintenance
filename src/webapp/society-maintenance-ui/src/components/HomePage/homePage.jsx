@@ -8,6 +8,8 @@ import MyIssueScreen from '../MyIssueScreen/myIssueScreen';
 import NoticeBoard from '../NoticeBoard/noticeBoard';
 import TenentsScreen from '../TenentsScreen/tenentsScreen';
 import SocietyActivityScreen from '../SocietyActivityScreen/societyActivityScreen';
+import { useQuery } from 'react-query';
+import { FetchHello} from '../../data/fetchData';
 function HomePage() {
   const [sideBarStatus, setSideBarStatus] = useState("open");
   const [sideBarOption,setSideBarOption] = useState("maintenanceScreen")
@@ -20,7 +22,10 @@ function HomePage() {
   };
   const handleSideBarOptionChange = (option) => {
     setSideBarOption(option);
-};
+  };
+
+  const helloQuery = useQuery([], FetchHello());
+
   return (
     <div className="main-window">
         <div className='main-window-header'>
