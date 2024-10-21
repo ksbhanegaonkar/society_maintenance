@@ -1,10 +1,9 @@
 package com.bhan.ked.controller;
 
+import com.bhan.ked.model.MaintenanceDetail;
 import com.bhan.ked.service.MaintenanceService;
 import io.micronaut.http.MediaType;
-import io.micronaut.http.annotation.Controller;
-import io.micronaut.http.annotation.Get;
-import io.micronaut.http.annotation.Produces;
+import io.micronaut.http.annotation.*;
 import io.micronaut.security.annotation.Secured;
 import io.micronaut.security.rules.SecurityRule;
 import jakarta.inject.Inject;
@@ -27,7 +26,14 @@ public class HomeController {
     @Produces(MediaType.TEXT_PLAIN)
     @Get(uri = "/hello")
     public String hello(Principal principal){
-        maintenanceService.getMaintenanceDetails();
         return "hello";
     }
+
+    @Produces(MediaType.TEXT_PLAIN)
+    @Post(uri = "/saveMaintenance")
+    public String saveMaintenanceDetail(@Body MaintenanceDetail maintenanceDetail){
+        maintenanceService.saveMaintenanceDetail(maintenanceDetail);
+        return "hello";
+    }
+
 }

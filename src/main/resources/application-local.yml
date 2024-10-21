@@ -1,10 +1,17 @@
 micronaut:
   server:
+    port: 8080
     cors:
       enabled: true
   application:
     name: society_maintenance
   security:
+    endpoints:
+      patterns:
+        - "/swagger/**"
+        - "/v3/api-docs/**"
+        - "/swagger-ui/**"
+      permit-all: true
     authentication: bearer
     token:
       jwt:
@@ -24,18 +31,18 @@ micronaut:
         mapping: /swagger-ui/**
         paths: classpath:META-INF/swagger/views/swagger-ui
 
-datasources:
-  default:
-    db-type: postgres
-    dialect: POSTGRES
-    driver-class-name: org.postgresql.Driver
-    url: jdbc:postgresql://localhost/society_maintenance
-    username: postgres
-    password: root
+  datasources:
+    default:
+      db-type: postgres
+      dialect: POSTGRES
+      driver-class-name: org.postgresql.Driver
+      url: jdbc:postgresql://localhost/society_maintenance
+      username: postgres
+      password: root
 
-jpa:
-  default:
-    properties:
-      hibernate:
-        hbm2ddl:
-          auto: create
+  jpa:
+    default:
+      properties:
+        hibernate:
+          hbm2ddl:
+            auto: update
