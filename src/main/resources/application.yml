@@ -29,7 +29,7 @@ datasources:
     db-type: postgres
     dialect: POSTGRES
     driver-class-name: org.postgresql.Driver
-    url: jdbc:postgresql://192.168.1.10/mydatabase
+    url: jdbc:postgresql://host.containers.internal:5432/mydatabase
     username: myuser
     password: strongpassword
 
