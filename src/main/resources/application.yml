@@ -6,13 +6,17 @@ micronaut:
     name: society_maintenance
   security:
     authentication: bearer
-    endpoints:
-      patterns:
-        - "/swagger/**"
-        - "/v3/api-docs/**"
-        - "/swagger-ui/**"
-        - "/**"
-      permit-all: true
+    intercept-url-map:
+      - pattern: /
+        access: isAnonymous()
+      - pattern: /swagger/**
+        access: isAnonymous()
+      - pattern: /swagger-ui/**
+        access: isAnonymous()
+      - pattern: /v3/api-docs/**
+        access: isAnonymous()
+      - pattern: /api/**
+        access: isAuthenticated()
     token:
       jwt:
         signatures:
