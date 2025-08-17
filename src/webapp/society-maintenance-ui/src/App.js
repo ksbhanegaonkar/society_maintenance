@@ -10,7 +10,7 @@ function App() {
     <Routes>
       <Route path="/" element={<Layout />}>
         <Route index element={<LoginPage />} />
-        <Route path="login" element={<LoginPage />} />
+        <Route path="login-page" element={<LoginPage />} />
         <Route element={<RequireAuth/>}>
           <Route path="home" element={<HomePage />} />
         </Route>
