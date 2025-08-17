@@ -7,16 +7,39 @@ micronaut:
   security:
     authentication: bearer
     intercept-url-map:
+      # Allow root React index.html
       - pattern: /
         access: isAnonymous()
       - pattern: /index.html
         access: isAnonymous()
+
+      # Allow static React build files
+      - pattern: /static/**
+        access: isAnonymous()
+      - pattern: /**.js
+        access: isAnonymous()
+      - pattern: /**.css
+        access: isAnonymous()
+      - pattern: /**.ico
+        access: isAnonymous()
+      - pattern: /**.png
+        access: isAnonymous()
+      - pattern: /**.jpg
+        access: isAnonymous()
+      - pattern: /**.woff2
+        access: isAnonymous()
+      - pattern: /**.woff
+        access: isAnonymous()
+
+      # Swagger / Docs
       - pattern: /swagger/**
         access: isAnonymous()
       - pattern: /swagger-ui/**
         access: isAnonymous()
       - pattern: /v3/api-docs/**
         access: isAnonymous()
+
+      # Protect APIs only
       - pattern: /api/**
         access: isAuthenticated()
     token:
