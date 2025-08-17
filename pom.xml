@@ -118,7 +118,7 @@
         <configuration>
           <archive>
             <manifest>
-              <mainClass>com.example.MainClass</mainClass>
+              <mainClass>com.bhan.ked.Application</mainClass>
             </manifest>
           </archive>
         </configuration>
