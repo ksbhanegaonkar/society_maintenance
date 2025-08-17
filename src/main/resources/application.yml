@@ -20,6 +20,12 @@ micronaut:
       - pattern: /login
         access: [ isAnonymous() ]
 
+      - pattern: /home
+        access: [ isAnonymous() ]
+
+      - pattern: /
+        access: [ isAnonymous() ]
+
       # Allow static resources
       - pattern: /static/**
         access: [ isAnonymous() ]
