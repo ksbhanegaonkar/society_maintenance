@@ -7,7 +7,7 @@ set -e
 PROJECT_ROOT=$(pwd)
 UI_DIR="$PROJECT_ROOT/src/webapp/society-maintenance-ui"
 SPRING_RESOURCES="$PROJECT_ROOT/src/main/resources/static"
-JAR_NAME="society-maintenance-app.jar"
+JAR_NAME="society-maintenance.jar"
 IMAGE_NAME="society-maintenance-app:latest"
 APP_PORT=8080
 
@@ -32,7 +32,7 @@ cd "$PROJECT_ROOT"
 ./mvnw clean package -DskipTests
 
 # Find the generated JAR
-BUILT_JAR=$(find target -name "*.jar" | head -n 1)
+BUILT_JAR=$(find target -maxdepth 1 -type f -name "society_maintenance-*.jar" ! -name "*-plain.jar" | head -n 1)
 if [[ -z "$BUILT_JAR" ]]; then
   echo "ERROR: JAR not found!"
   exit 1
