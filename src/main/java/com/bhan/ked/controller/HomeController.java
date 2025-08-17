@@ -31,9 +31,9 @@ public class HomeController {
 
     @Produces(MediaType.TEXT_PLAIN)
     @Post(uri = "/saveMaintenance")
-    public String saveMaintenanceDetail(@Body MaintenanceDetail maintenanceDetail){
-        maintenanceService.saveMaintenanceDetail(maintenanceDetail);
-        return "hello";
+    public String saveMaintenanceDetail(@Body MaintenanceDetail maintenanceDetail, Principal principal){
+        maintenanceService.saveMaintenanceDetail(maintenanceDetail, principal.getName());
+        return "SUCCESS";
     }
 
 }

@@ -3,6 +3,8 @@ import './maintenanceScreen.css'
 import MyMaintenanceGrid from './myMaintenanceGrid';
 import SocietyMaintenanceGrid from './societyMaintenanceGrid';
 import { useState } from 'react';
+import { useMutation } from 'react-query';
+import { SaveMaintenanceDetail } from '../../data/fetchData';
 function MaintenanceScreen() {
     const [period, setPeriod] = useState('');
     const [monthSelected, setMonthSelected] = useState('');
@@ -31,7 +33,17 @@ function MaintenanceScreen() {
     const handleMonthDropdownSelect = (eventKey) => {
         setMonthSelected(eventKey);
     };
+    const { mutate, isLoading } = useMutation(SaveMaintenanceDetail, {
+        onSuccess: data => {
+          console.log(data);
+          const message = "success"
+        },
+        onError: (e) => {
+          alert("there was an error"+e)
+        }
+      });
     const handleReceiptSubmitForApproval = () => {
+        mutate(period, monthSelected, amountDropdownList[period]);
         setModalShow(false);
     }
   return (
