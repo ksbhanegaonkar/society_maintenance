@@ -64,6 +64,14 @@ micronaut:
       swagger-ui:
         mapping: /swagger-ui/**
         paths: classpath:META-INF/swagger/views/swagger-ui
+      default:
+        enabled: true
+        paths: classpath:static
+        mapping: /**
+      spa:
+        enabled: true
+        paths: classpath:static/index.html
+        mapping: /**
 
 datasources:
   default:
