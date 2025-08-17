@@ -59,10 +59,12 @@ micronaut:
       swagger-ui:
         mapping: /swagger-ui/**
         paths: classpath:META-INF/swagger/views/swagger-ui
-      default:
-        mapping: /**
+      react:
         paths: classpath:static
-        default-file: index.html
+        mapping: /static/**
+      index:
+        paths: classpath:static/index.html
+        mapping: /
 
 datasources:
   default:
