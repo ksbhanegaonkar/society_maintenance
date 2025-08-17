@@ -15,6 +15,31 @@ micronaut:
         generator:
           refresh-token:
             secret: '"${JWT_GENERATOR_SIGNATURE_SECRET:pleaseChangeThisSecretForANewOne}"'
+    intercept-url-map:
+      # Allow React login page
+      - pattern: /
+        access:
+          - isAnonymous()
+      - pattern: /login
+        access:
+          - isAnonymous()
+
+      # Allow static resources (JS, CSS, etc.)
+      - pattern: /static/**
+        access:
+          - isAnonymous()
+      - pattern: /favicon.ico
+        access:
+          - isAnonymous()
+
+      # Allow your auth API endpoint
+      - pattern: /api/auth/login
+        access:
+          - isAnonymous()
+
+      # Protect everything else
+      - pattern: /api/**
+        access:
   router:
     static-resources:
       swagger:
