@@ -47,7 +47,7 @@ cp "$BUILT_JAR" "$PROJECT_ROOT/$JAR_NAME"
 echo "Creating temporary Dockerfile..."
 DOCKERFILE="$PROJECT_ROOT/Dockerfile.temp"
 cat > "$DOCKERFILE" <<EOL
-FROM eclipse-temurin:21-jdk-alpine
+FROM docker.io/eclipse-temurin:17-jdk-alpine
 WORKDIR /app
 COPY $JAR_NAME app.jar
 EXPOSE $APP_PORT
