@@ -9,7 +9,18 @@ UI_DIR="$PROJECT_ROOT/src/webapp/society-maintenance-ui"
 SPRING_RESOURCES="$PROJECT_ROOT/src/main/resources/static"
 JAR_NAME="society-maintenance.jar"
 IMAGE_NAME="society-maintenance-app:latest"
+CONTAINER_NAME="society-maintenance"
 APP_PORT=8080
+
+# -------------------------
+# Step 0: Cleanup old container
+# -------------------------
+echo "Checking for existing container..."
+if podman ps -a --format '{{.Names}}' | grep -Eq "^${CONTAINER_NAME}\$"; then
+  echo "Stopping and removing existing container: $CONTAINER_NAME"
+  podman stop "$CONTAINER_NAME" || true
+  podman rm -f "$CONTAINER_NAME" || true
+fi
 
 # -------------------------
 # Step 1: Build React UI
@@ -67,7 +78,7 @@ rm "$JAR_NAME"
 # -------------------------
 # Step 5: Run Container
 # -------------------------
-echo "Running container..."
-podman run -d -p $APP_PORT:$APP_PORT --name society-maintenance "$IMAGE_NAME"
+echo "Running new container..."
+podman run -d -p $APP_PORT:$APP_PORT --name "$CONTAINER_NAME" "$IMAGE_NAME"
 
 echo "Done! App is running on port $APP_PORT"
