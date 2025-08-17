@@ -5,7 +5,6 @@ micronaut:
   application:
     name: society_maintenance
   security:
-    enabled: false
     authentication: bearer
     token:
       jwt:
