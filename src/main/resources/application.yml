@@ -17,29 +17,22 @@ micronaut:
             secret: '"${JWT_GENERATOR_SIGNATURE_SECRET:pleaseChangeThisSecretForANewOne}"'
     intercept-url-map:
       # Allow React login page
-      - pattern: /
-        access:
-          - isAnonymous()
       - pattern: /login
-        access:
-          - isAnonymous()
+        access: [ isAnonymous() ]
 
-      # Allow static resources (JS, CSS, etc.)
+      # Allow static resources
       - pattern: /static/**
-        access:
-          - isAnonymous()
+        access: [ isAnonymous() ]
       - pattern: /favicon.ico
-        access:
-          - isAnonymous()
+        access: [ isAnonymous() ]
 
-      # Allow your auth API endpoint
+      # Allow your backend login API
       - pattern: /api/auth/login
-        access:
-          - isAnonymous()
+        access: [ isAnonymous() ]
 
-      # Protect everything else
+      # Protect all other backend APIs
       - pattern: /api/**
-        access:
+        access: [ isAuthenticated() ]
   router:
     static-resources:
       swagger:
