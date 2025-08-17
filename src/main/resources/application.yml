@@ -65,6 +65,10 @@ micronaut:
       index:
         paths: classpath:static/index.html
         mapping: /
+      default:
+        mapping: /**
+        paths: classpath:static
+        default-file: index.html
 
 datasources:
   default:
