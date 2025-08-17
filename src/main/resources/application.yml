@@ -12,6 +12,8 @@ micronaut:
         access: isAnonymous()
       - pattern: /index.html
         access: isAnonymous()
+      - pattern: /login
+        access: isAnonymous()
 
       # Allow static React build files
       - pattern: /static/**
