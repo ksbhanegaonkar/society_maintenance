@@ -30,6 +30,8 @@ micronaut:
         access: isAnonymous()
       - pattern: /**.woff
         access: isAnonymous()
+      - pattern: /manifest.json
+        access: isAnonymous()
 
       # Swagger / Docs
       - pattern: /swagger/**
