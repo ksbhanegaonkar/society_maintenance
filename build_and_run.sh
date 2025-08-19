@@ -10,7 +10,7 @@ SPRING_RESOURCES="$PROJECT_ROOT/src/main/resources/static"
 JAR_NAME="society-maintenance.jar"
 IMAGE_NAME="society-maintenance-app:latest"
 CONTAINER_NAME="society-maintenance"
-APP_PORT=8080
+APP_PORT=8090
 
 # -------------------------
 # Step 0: Cleanup old container
