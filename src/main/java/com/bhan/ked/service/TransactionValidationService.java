@@ -14,6 +14,7 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 public class TransactionValidationService {
+    public static final Set<String> validTransactionKeywords = Set.of("IMPS", "UPI", "NEFT");
     public static void main(String[] args) throws IOException {
         NoBrokerHoodExcelParser noBrokerHoodExcelParser = new NoBrokerHoodExcelParser();
         BankStatementParser bankStatementParser = new BankStatementParser();
@@ -31,6 +32,7 @@ public class TransactionValidationService {
                 .collect(Collectors.groupingBy(BankTransaction::getParticulars));
 
         Map<String, List<Pair<BankTransaction, NoBrokerHoodStatementRow>>> bankTransactionNoBrokerTransactionMapByBankTransactionId = bankTransactionsByParticulars.entrySet().stream()
+                .filter(entry -> validTransactionKeywords.stream().anyMatch(keyword -> entry.getKey().contains(keyword)))
                 .map(entry -> mapToTransactionaPair(entry.getKey(), entry.getValue(), noBrokerEntriesByFlatNumber))
                 .collect(Collectors.groupingBy(pair -> pair.getLeft().getParticulars()));
 
