@@ -14,7 +14,6 @@ import java.util.List;
 import java.util.Objects;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-import java.util.stream.Stream;
 
 public class BankStatementParser {
 
@@ -48,18 +47,35 @@ public class BankStatementParser {
 
     static List<BankTransaction> parseTransactions(String text) {
         String[] lines = text.split("\\r?\\n");
-        StringBuilder currentRow = new StringBuilder();
+        List<List<String>> records = new ArrayList<>();
 
-        return Stream.of(lines)
-                .map(BankStatementParser::extractColumns)
-                .filter(list -> list.size() == 8)
+        Pattern datePattern = Pattern.compile("^\\|\\d{2}-\\d{2}-\\d{4}\\|");
+
+        for (String line : lines) {
+            if (datePattern.matcher(line).find()) {
+                // new transaction row
+                List<String> cols = extractColumns(line);
+                if (cols.size() == 8) {
+                    records.add(cols);
+                }
+            } else if (!line.trim().isEmpty() && !records.isEmpty()) {
+                // continuation line → append to particulars (col[1])
+                List<String> last = records.get(records.size() - 1);
+                last.set(1, last.get(1) + " " + line.trim());
+            }
+        }
+
+        return records.stream()
                 .map(cols -> {
                     try {
                         LocalDate date = LocalDate.parse(cols.get(0).trim(), DATE_FMT);
-                        return new BankTransaction(date, cols.get(1), cols.get(2),
-                                Objects.nonNull(cols.get(3)) ? cols.get(3) : cols.get(4),
-                                Objects.nonNull(cols.get(5)) ? cols.get(5) : cols.get(6),
-                                cols.get(7)
+                        return new BankTransaction(
+                                date,
+                                cols.get(1).trim(), // particulars (with continuation text appended)
+                                cols.get(2).trim(),
+                                cols.get(3) != null && !cols.get(3).isBlank() ? cols.get(3).trim() : cols.get(4).trim(),
+                                cols.get(5) != null && !cols.get(5).isBlank() ? cols.get(5).trim() : cols.get(6).trim(),
+                                cols.get(7).trim()
                         );
                     } catch (Exception e) {
                         return null;

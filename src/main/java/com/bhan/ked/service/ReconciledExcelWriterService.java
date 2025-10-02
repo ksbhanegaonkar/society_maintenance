@@ -50,10 +50,6 @@ public class ReconciledExcelWriterService {
         }
 
         // Fill rows
-        List<Integer> flatNumbersSorted = flatToName.keySet().stream()
-                .map(Integer::parseInt)
-                .sorted()
-                .toList();
         int rowIdx = 1;
         List<String> sortedFlatNumbers = flatToName.keySet().stream()
                 .sorted(Comparator.comparing(Integer::parseInt))
