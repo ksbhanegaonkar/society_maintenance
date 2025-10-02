@@ -97,7 +97,10 @@ public class ReconciledExcelWriterService {
             }
 
             // Write records for this month
-            List<ReconciledRecord> monthRecords = recordsByMonth.getOrDefault(month, Collections.emptyList());
+            List<ReconciledRecord> monthRecords = recordsByMonth.getOrDefault(month, Collections.emptyList())
+                    .stream()
+                    .sorted(Comparator.comparing(ReconciledRecord::getBankTransactionDate))
+                    .toList();
 
             rowIdx = 1;
             for (ReconciledRecord r : monthRecords) {
